@@ -24,9 +24,17 @@
 </head>
 <body>
   <iframe
-    src="https://ipaas.pipefy.com/api/v1/webhooks/0ePOoShcHy1iiOB07IGj5/sync?cardPaiId=1442456755"
+    id="webhook"
     title="Integração Pipefy"
-    loading="lazy">
-  </iframe>
+  ></iframe>
+
+  <script>
+    const cardPaiId = new URLSearchParams(window.location.search).get('cardPaiId');
+    const webhook = document.getElementById('webhook');
+
+    if (cardPaiId) {
+      webhook.src = `https://ipaas.pipefy.com/api/v1/webhooks/0ePOoShcHy1iiOB07IGj5/sync?cardPaiId=${encodeURIComponent(cardPaiId)}`;
+    }
+  </script>
 </body>
 </html>
